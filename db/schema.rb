@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141126194518) do
+ActiveRecord::Schema.define(version: 20141126213852) do
 
   create_table "topics", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.string   "suggested_by"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "vote_count",   default: 0
   end
 
 end

@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :set_topic, only: [:show, :edit, :update, :destroy, :vote]
 
   # GET /topics
   # GET /topics.json
@@ -49,6 +49,11 @@ class TopicsController < ApplicationController
         format.json { render json: @topic.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def vote
+    @topic.vote!
+    redirect_to topics_url, notice: "You have successfully voted for Topic '#{@topic.name}'"
   end
 
   # DELETE /topics/1

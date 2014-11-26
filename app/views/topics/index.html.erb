@@ -4,9 +4,13 @@
 
 <% @topics.each do |topic| %>
   <hr />
-  <h2><%= link_to topic.name, topic %></h1>
+  <h2><%= topic.vote_count %> <%= link_to topic.name, topic %></h1>
   Suggested by: <strong><%= topic.suggested_by %></strong>
   <p><%= topic.description %></p>
+
+  <%= form_for(topic, url: vote_topic_path(topic), method: :post) do |f| %>
+    <%= f.submit "Vote" %>
+  <% end %>
 <% end %>
 
 <br>
